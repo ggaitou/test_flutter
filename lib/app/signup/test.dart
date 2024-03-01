@@ -4,43 +4,43 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<Album> createAlbum(String title) async {
+Future<Album> createAlbum(String username) async {
   final response = await http.post(
     Uri.parse('https://dummyjson.com/users/add'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
     body: jsonEncode(<String, String>{
-      'username': title,
+      'username': username,
     }),
   );
 
-  if (response.statusCode == 201) {
+  if (response.statusCode == 200) {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
     return Album.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
     // If the server did not return a 201 CREATED response,
     // then throw an exception.
-    throw Exception('Failed to create album.');
+    throw Exception(response.statusCode);
   }
 }
 
 class Album {
   final int id;
-  final String title;
+  final String username;
 
-  const Album({required this.id, required this.title});
+  const Album({required this.id, required this.username});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
       'id': int id,
-      'title': String title,
+      'username': String username,
       } =>
           Album(
             id: id,
-            title: title,
+            username: username,
           ),
       _ => throw const FormatException('Failed to load album.'),
     };
@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
       future: _futureAlbum,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text(snapshot.data!.title);
+          //return Text(snapshot.data!.title);
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }

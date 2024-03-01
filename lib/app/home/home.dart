@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../product/product.dart';
 import '../signin/Signin.dart';
 import '../signup/Signup.dart';
 
@@ -145,9 +146,10 @@ class _SampleCard extends StatelessWidget {
         const SizedBox(width: 15,),
         Center(
           child:ElevatedButton(
-            onPressed: () {
+
               // Navigate back to first route when tapped.
-            },
+              onPressed: ()  { Navigator.push(context,MaterialPageRoute(builder: (context) => Product()),); }
+            ,
             child:  Text(cardName),
           ),
 

@@ -66,8 +66,8 @@ class _SigninState extends State<Signin> {
           const SizedBox(height: 20,),
           Center(
               child:ElevatedButton(
-              //onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context) => Signup()),);},
-                onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp()),);},
+              onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context) => Signup()),);},
+                //onPressed: ()  {Navigator.push(context,MaterialPageRoute(builder: (context) => MyApp()),);},
              child: const Text('S\'inscrire', ),
           ),
 
