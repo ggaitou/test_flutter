@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_flutter/app/splash/Splash.dart';
-import 'package:test_flutter/app/login.dart';
+
 
 import 'app/signup/Signup.dart';
 void main() {
